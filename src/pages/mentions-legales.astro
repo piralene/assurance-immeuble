@@ -2,29 +2,40 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../consts';
 ---
-<BaseLayout title="Mentions légales" description="Mentions légales et informations réglementaires du site assurance-immeuble.fr" noindex={false}>
+<BaseLayout title="Mentions légales" description="Mentions légales et informations réglementaires de l'agence Allianz Frédéric Pegon, éditeur du site assurance-immeuble.fr">
   <section class="section">
     <div class="container prose">
       <h1>Mentions légales</h1>
 
       <h2>Éditeur du site</h2>
-      <p>{SITE.legalName}<br />Courtier en assurances immatriculé à l'ORIAS<br />Contact : <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+      <p>
+        <strong>{SITE.legalName}</strong> – Agent général d'assurances<br />
+        {SITE.address}<br />
+        Téléphone : {SITE.phone}<br />
+        Email : <a href={`mailto:${SITE.email}`}>{SITE.email}</a><br />
+        Directeur de la publication : Frédéric Pegon<br />
+        Responsable du site : Frédéric Pegon
+      </p>
 
-      <h2>Directeur de la publication</h2>
-      <p>Le responsable de la publication est le représentant légal du cabinet de courtage éditeur du site.</p>
+      <h2>Statut ORIAS et autorité de contrôle</h2>
+      <p>
+        Immatriculé à l'ORIAS sous le n° <strong>{SITE.orias}</strong> (<a href="https://www.orias.fr" target="_blank" rel="noopener">www.orias.fr</a>), en qualité d'agent général d'assurances.<br />
+        N° SIRET : {SITE.siret}<br />
+        {SITE.rcs}
+      </p>
+      <p>Notre activité est soumise au contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR), 4 Place de Budapest, CS 92459, 75436 Paris cedex 09.</p>
 
       <h2>Hébergement</h2>
       <p>Le site est hébergé par Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, California 94104, USA.</p>
 
-      <h2>Statut ORIAS et autorité de contrôle</h2>
-      <p>Notre cabinet est inscrit au Registre Unique des Intermédiaires en Assurance, Banque et Finance sous un numéro consultable à l'adresse www.orias.fr.</p>
-      <p>Notre activité est soumise au contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR), 4 Place de Budapest, CS 92459, 75436 Paris cedex 09.</p>
-
       <h2>Propriété intellectuelle</h2>
       <p>L'ensemble des contenus présents sur le site (textes, graphismes, logos, icônes, images, vidéos) est protégé par le droit d'auteur et le droit des marques. Toute reproduction, représentation, modification ou adaptation, totale ou partielle, est interdite sans autorisation écrite préalable.</p>
 
+      <h2>Traitement des données</h2>
+      <p>Les informations recueillies via ce site sont destinées exclusivement à l'agence {SITE.legalName} pour le traitement de votre demande d'assurance. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données, que vous pouvez exercer en contactant l'agence à l'adresse ci-dessus.</p>
+
       <h2>Traitement des réclamations</h2>
-      <p>Toute réclamation peut être adressée à notre service qualité par courriel à l'adresse ci-dessus. Un accusé de réception vous sera transmis sous 10 jours ouvrés, et une réponse dans les deux mois suivant votre demande.</p>
+      <p>Toute réclamation peut être adressée à notre agence par courriel à <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Un accusé de réception vous sera transmis sous 10 jours ouvrés, et une réponse dans les deux mois suivant votre demande.</p>
       <p>En cas de désaccord persistant, vous pouvez saisir gratuitement la Médiation de l'Assurance : La Médiation de l'Assurance, TSA 50110, 75441 Paris Cedex 09, ou en ligne à www.mediation-assurance.org.</p>
 
       <h2>Loi applicable</h2>

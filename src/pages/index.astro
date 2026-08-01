@@ -36,6 +36,14 @@ const jsonld = [
     name: SITE.legalName,
     url: SITE.url,
     email: SITE.email,
+    telephone: SITE.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '26 rue Gambetta',
+      postalCode: '71000',
+      addressLocality: 'Mâcon',
+      addressCountry: 'FR',
+    },
     areaServed: 'FR',
     description: SITE.description,
     serviceType: [
@@ -44,6 +52,7 @@ const jsonld = [
       "Assurance copropriété",
       "Assurance SCI",
     ],
+    identifier: 'ORIAS 07 021 339',
   },
   {
     '@context': 'https://schema.org',

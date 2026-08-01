@@ -1,12 +1,17 @@
 export const SITE = {
   name: 'assurance-immeuble.fr',
-  legalName: "Cabinet de courtage en assurance d'immeuble",
+  legalName: 'Allianz Frédéric Pegon',
   url: 'https://www.assurance-immeuble.fr',
-  email: 'contact@assurance-immeuble.fr',
-  phone: '',
-  tagline: "Courtier indépendant en assurance d'immeuble",
+  email: 'pegon.macon@allianz.fr',
+  phone: '03 85 22 99 00',
+  address: '26 rue Gambetta, 71000 Mâcon',
+  hours: 'Lun–Ven : 9h-12h / 14h-18h',
+  orias: '07 021 339',
+  siret: '430 209 353 00019',
+  rcs: 'RCS Mâcon 430 290 353',
+  tagline: "Agence Allianz spécialisée en assurance d'immeuble",
   description:
-    "Assurance multirisque immeuble et PNO pour copropriétés, syndics, propriétaires bailleurs, monopropriétés et SCI. Devis en ligne, réponse sous 24 h, garanties sur mesure.",
+    "Assurance multirisque immeuble et PNO pour copropriétés, syndics, propriétaires bailleurs, monopropriétés et SCI. Agence Allianz Frédéric Pegon à Mâcon, devis en ligne, réponse sous 24 h.",
 };
 
 export const NAV = [
