@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+---
+<BaseLayout title="Mentions légales" description="Mentions légales et informations réglementaires du site assurance-immeuble.fr" noindex={false}>
+  <section class="section">
+    <div class="container prose">
+      <h1>Mentions légales</h1>
+
+      <h2>Éditeur du site</h2>
+      <p>{SITE.legalName}<br />Courtier en assurances immatriculé à l'ORIAS<br />Contact : <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+
+      <h2>Directeur de la publication</h2>
+      <p>Le responsable de la publication est le représentant légal du cabinet de courtage éditeur du site.</p>
+
+      <h2>Hébergement</h2>
+      <p>Le site est hébergé par Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, California 94104, USA.</p>
+
+      <h2>Statut ORIAS et autorité de contrôle</h2>
+      <p>Notre cabinet est inscrit au Registre Unique des Intermédiaires en Assurance, Banque et Finance sous un numéro consultable à l'adresse www.orias.fr.</p>
+      <p>Notre activité est soumise au contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR), 4 Place de Budapest, CS 92459, 75436 Paris cedex 09.</p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>L'ensemble des contenus présents sur le site (textes, graphismes, logos, icônes, images, vidéos) est protégé par le droit d'auteur et le droit des marques. Toute reproduction, représentation, modification ou adaptation, totale ou partielle, est interdite sans autorisation écrite préalable.</p>
+
+      <h2>Traitement des réclamations</h2>
+      <p>Toute réclamation peut être adressée à notre service qualité par courriel à l'adresse ci-dessus. Un accusé de réception vous sera transmis sous 10 jours ouvrés, et une réponse dans les deux mois suivant votre demande.</p>
+      <p>En cas de désaccord persistant, vous pouvez saisir gratuitement la Médiation de l'Assurance : La Médiation de l'Assurance, TSA 50110, 75441 Paris Cedex 09, ou en ligne à www.mediation-assurance.org.</p>
+
+      <h2>Loi applicable</h2>
+      <p>Le présent site est régi par la loi française. En cas de litige, les tribunaux français seront seuls compétents.</p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { GUARANTEES, QUOTE_HREF } from '../consts';
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Assurance multirisque immeuble',
+    description: "Contrat multirisque immeuble pour copropriétés, monopropriétés, SCI. Garanties incendie, dégâts des eaux, événements climatiques, catastrophes naturelles, vol, bris de glace, dommages électriques, responsabilité civile propriétaire d'immeuble.",
+    brand: { '@type': 'Brand', name: 'assurance-immeuble.fr' },
+    category: 'Insurance',
+  },
+];
+---
+<BaseLayout
+  title="Assurance multirisque immeuble : copropriété, monopropriété, SCI"
+  description="Multirisque immeuble sur mesure pour copropriétés, monopropriétés et SCI. Garanties complètes, RC propriétaire jusqu'à 6 M€, devis sous 24 h."
+  jsonld={jsonld}
+>
+  <section class="hero" style="padding: 60px 0 50px;">
+    <div class="container">
+      <p class="eyebrow">Multirisque immeuble</p>
+      <h1>Multirisque immeuble : la protection complète de votre patrimoine</h1>
+      <p class="lead">Un contrat unique pour couvrir le bâtiment, les parties communes, les équipements techniques et votre responsabilité civile de propriétaire.</p>
+      <div class="hero-actions">
+        <a href={QUOTE_HREF} class="btn btn--primary">Demander un devis</a>
+        <a href="#garanties" class="btn btn--on-navy">Voir les garanties</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <h2>À qui s'adresse la multirisque immeuble ?</h2>
+      <p>La multirisque immeuble, souvent appelée <strong>MRI</strong>, est le contrat de référence pour assurer un bâtiment collectif contre les dommages matériels et engager la responsabilité civile du propriétaire vis-à-vis des tiers.</p>
+      <p>Elle concerne principalement :</p>
+      <ul>
+        <li><strong>Les copropriétés</strong> gérées par un syndic professionnel ou bénévole. La souscription d'un contrat responsabilité civile est obligatoire depuis la loi ALUR pour toute copropriété.</li>
+        <li><strong>Les monopropriétés</strong>, immeubles de rapport détenus par un seul propriétaire, particulier ou société.</li>
+        <li><strong>Les SCI et sociétés immobilières</strong>, qu'elles soient familiales, patrimoniales ou de rendement.</li>
+        <li>Les <strong>immeubles mixtes</strong> habitation / commerce, sous conditions de vérification annuelle des assurances locatives.</li>
+      </ul>
+
+      <h2 id="garanties">Le socle de garanties principales</h2>
+      <p>Le contrat garantit les dommages matériels aux parties communes, aux dépendances et aux aménagements immobiliers, ainsi que la responsabilité civile du propriétaire, du syndic et des copropriétaires en tant que tels.</p>
+    </div>
+
+    <div class="container" style="margin-top: 30px;">
+      <div class="grid grid--3">
+        {GUARANTEES.map((g) => (
+          <div class="card">
+            <i class={`ti ${g.icon} ico`} aria-hidden="true"></i>
+            <h3>{g.title}</h3>
+            <p>{g.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container prose">
+      <h2 id="syndic-benevole">Focus : le syndic bénévole</h2>
+      <p>Lorsqu'un copropriétaire assume gratuitement les fonctions de syndic pour son immeuble, il engage sa responsabilité personnelle. Une <strong>garantie responsabilité civile du syndic bénévole</strong> est intégrée au contrat, avec un plafond de 150 000 € par sinistre et une franchise de 500 €.</p>
+      <p>Elle couvre notamment :</p>
+      <ul>
+        <li>Les erreurs, omissions ou négligences dans la gestion (convocation d'AG, tenue des comptes, appels de fonds)</li>
+        <li>La perte ou destruction de documents confiés (archives, procès-verbaux, contrats)</li>
+        <li>Les recours des copropriétaires en cas de préjudice dû à un défaut de gestion</li>
+      </ul>
+
+      <h2 id="sci">Focus : SCI et sociétés immobilières</h2>
+      <p>Lorsque l'immeuble appartient à une société civile immobilière, le contrat est souscrit au nom de la personne morale. Sont alors garantis :</p>
+      <ul>
+        <li>La société elle-même en qualité de propriétaire de l'immeuble</li>
+        <li>Chacun des porteurs de parts, dans le cadre de ses relations avec les tiers concernant l'immeuble</li>
+        <li>Les gérants dans leur mission de représentation légale</li>
+      </ul>
+      <p>Attention : les copropriétaires occupants ne sont pas couverts pour leur responsabilité civile privée d'occupant. Une assurance habitation personnelle reste indispensable.</p>
+
+      <h2>Les options qui font vraiment la différence</h2>
+      <ul>
+        <li><strong>Protection juridique copropriété</strong> jusqu'à 20 000 € par sinistre pour les litiges avec entrepreneurs, voisins, administrations, assureurs, copropriétaires impayeurs.</li>
+        <li><strong>Effondrement du bâtiment</strong> jusqu'à 3 M€ (fondations, structure, murs, toiture), avec prise en charge des frais de déblais et de démolition.</li>
+        <li><strong>Panneaux solaires et photovoltaïques</strong> intégrés à la toiture ou fixés en façade, y compris la responsabilité vis-à-vis du distributeur d'électricité.</li>
+        <li><strong>Perte de loyers</strong> jusqu'à 2 ans, correspondant au temps de remise en état après sinistre garanti.</li>
+        <li><strong>Frais annexes</strong> : déblais, décontamination, mise en conformité, honoraires de syndic professionnel, honoraires d'architecte et d'expert d'assuré.</li>
+      </ul>
+
+      <p style="margin-top:24px;"><a href={QUOTE_HREF} class="btn btn--primary">Demander un devis multirisque immeuble</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Chaque immeuble a ses spécificités</h2>
+          <p>Année de construction, matériaux, équipements, sinistralité : parlons-en pour construire le contrat qui vous ressemble.</p>
+        </div>
+        <a href={QUOTE_HREF} class="btn btn--primary">Faire un devis</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

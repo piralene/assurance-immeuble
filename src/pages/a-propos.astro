@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { QUOTE_HREF, STATS, WHY_US } from '../consts';
+---
+<BaseLayout
+  title="Qui sommes-nous : courtier spécialisé en assurance d'immeuble"
+  description="Cabinet de courtage indépendant spécialisé depuis 30 ans dans l'assurance des immeubles. Immatriculation ORIAS, 4 500 immeubles assurés partout en France."
+>
+  <section class="hero" style="padding: 60px 0 50px;">
+    <div class="container">
+      <p class="eyebrow">À propos</p>
+      <h1>Le courtier qui parle vraiment d'immeubles</h1>
+      <p class="lead">Depuis 30 ans, notre cabinet ne fait que ça. Copropriétés, SCI, propriétaires bailleurs : nous connaissons vos contraintes parce que nous les traitons tous les jours.</p>
+      <div class="hero-actions">
+        <a href={QUOTE_HREF} class="btn btn--primary">Nous solliciter</a>
+        <a href="/multirisque-immeuble" class="btn btn--on-navy">Voir nos solutions</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <h2>Notre métier</h2>
+      <p>Nous sommes <strong>courtier en assurances</strong> immatriculé au registre unique des intermédiaires en assurance, banque et finance (ORIAS). Nous exerçons notre activité de manière indépendante, ce qui signifie que nous ne sommes ni salariés ni exclusifs d'une compagnie d'assurance.</p>
+      <p>Notre spécialité, c'est l'assurance des immeubles. Nous avons choisi il y a longtemps de concentrer notre expertise sur ce seul métier, plutôt que d'être généralistes. C'est ce qui nous permet de connaître les contrats, les clauses techniques, les jurisprudences et les usages du secteur mieux que la plupart des intervenants du marché.</p>
+
+      <h2>Nos engagements</h2>
+      <ul class="check-list">
+        <li>Comparer systématiquement au moins trois offres avant de vous transmettre un devis</li>
+        <li>Vous expliquer chaque clause dans un langage clair, sans jargon</li>
+        <li>Vous alerter à chaque échéance sur les évolutions possibles</li>
+        <li>Vous accompagner personnellement en cas de sinistre, jusqu'à l'indemnisation</li>
+        <li>Respecter votre décision, même si vous choisissez de ne pas nous confier votre contrat</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="container">
+      <p class="eyebrow" style="color:#d4a642;">Chiffres clés</p>
+      <h2>Trente ans au service des propriétaires d'immeubles</h2>
+      <div class="stats" style="margin-top:28px;">
+        {STATS.map((s) => (
+          <div class="stat">
+            <div class="val">{s.value}</div>
+            <div class="lab">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <p class="eyebrow">Notre différence</p>
+      <h2>Ce qui change quand on est spécialiste</h2>
+      <div class="grid grid--4" style="margin-top:24px;">
+        {WHY_US.map((w) => (
+          <div class="feature" style="background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px;">
+            <i class={`ti ${w.icon} ico`} style="color:var(--orange);" aria-hidden="true"></i>
+            <h3 style="color:var(--navy);">{w.title}</h3>
+            <p style="color:var(--muted);">{w.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <h2>Informations réglementaires</h2>
+      <p>Nous sommes soumis au contrôle de l'<strong>Autorité de Contrôle Prudentiel et de Résolution</strong> (ACPR - 4 Place de Budapest, CS 92459, 75436 Paris cedex 09) et inscrits au registre unique des intermédiaires tenu par l'<strong>ORIAS</strong> (www.orias.fr).</p>
+      <p>Nos partenaires assureurs sont des compagnies françaises et européennes autorisées à exercer en France. Le choix du partenaire s'effectue à chaque cotation, en fonction de la meilleure adéquation entre vos besoins et l'offre du marché.</p>
+      <p><strong>Réclamations :</strong> notre service qualité répond sous 10 jours ouvrés à toute réclamation adressée à l'adresse mentionnée sur votre contrat. À défaut de réponse satisfaisante, vous pouvez saisir la Médiation de l'Assurance (TSA 50110, 75441 Paris Cedex 09, www.mediation-assurance.org).</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Envie de nous confier votre immeuble ?</h2>
+          <p>Le devis est gratuit, sans engagement, et souvent instructif même si vous ne changez pas d'assureur.</p>
+        </div>
+        <a href={QUOTE_HREF} class="btn btn--primary">Faire un devis</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

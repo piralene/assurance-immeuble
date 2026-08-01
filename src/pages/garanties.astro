@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { GUARANTEES, QUOTE_HREF } from '../consts';
+
+const optionnelles = [
+  { icon: 'ti-scale-outline', title: "Protection juridique copropriété", plafond: "20 000 € / sinistre" },
+  { icon: 'ti-user-shield', title: "RC syndic bénévole", plafond: "150 000 € / sinistre" },
+  { icon: 'ti-solar-panel', title: "Installation d'énergie renouvelable", plafond: "50 000 €" },
+];
+
+const plafonds = [
+  { garantie: "Biens immobiliers (dommages)", limite: "Valeur d'indemnisation intégrale" },
+  { garantie: "Effondrement de bâtiment", limite: "3 000 000 € indexé" },
+  { garantie: "RC propriétaire d'immeuble", limite: "6 000 000 € indexé" },
+  { garantie: "RC atteinte à l'environnement", limite: "300 000 € par sinistre et par année" },
+  { garantie: "Frais de recherche de fuite destructifs", limite: "30 000 € indexé" },
+  { garantie: "Dégât des eaux (débordement d'égout)", limite: "150 000 € indexé" },
+  { garantie: "Détériorations immobilières (vol / vandalisme)", limite: "40 000 € indexé" },
+  { garantie: "Choc de véhicule non identifié", limite: "15 000 € indexé" },
+  { garantie: "Graffitis", limite: "5 000 € indexé" },
+  { garantie: "Dommages électriques aux équipements", limite: "40 000 € indexé" },
+  { garantie: "Bris de machine", limite: "100 000 € indexé" },
+  { garantie: "Bris de produits verriers (parties communes)", limite: "40 000 € indexé" },
+  { garantie: "Perte de loyer et d'usage", limite: "2 ans à compter du sinistre" },
+  { garantie: "Honoraires d'architecte, expert, contrôle technique", limite: "8 % de l'indemnité versée" },
+  { garantie: "Frais de démolition et déblais", limite: "10 % de l'indemnité versée" },
+  { garantie: "Frais de mise en conformité", limite: "10 % de l'indemnité versée" },
+];
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: "Que couvre la garantie effondrement de bâtiment ?",
+        acceptedAnswer: { '@type': 'Answer', text: "Elle prend en charge les dommages matériels subis par le bâtiment résultant d'un effondrement total ou partiel des fondations, de la structure porteuse, des murs et de la toiture, jusqu'à 3 millions d'euros indexés. Les frais de déblais et de démolition sont inclus dans ce plafond." }
+      },
+      {
+        '@type': 'Question',
+        name: "Quelle est la franchise en cas de catastrophe naturelle ?",
+        acceptedAnswer: { '@type': 'Answer', text: "L'assuré conserve à sa charge le montant de la franchise légale fixée par arrêté ministériel, actuellement 380 € pour les biens à usage d'habitation et 10 % du montant des dommages avec un minimum de 1 140 € pour les autres biens." }
+      },
+      {
+        '@type': 'Question',
+        name: "La responsabilité civile du propriétaire d'immeuble couvre-t-elle le syndic bénévole ?",
+        acceptedAnswer: { '@type': 'Answer', text: "Oui, l'assureur garantit également la responsabilité civile du conseil syndical et du syndic bénévole, y compris pour les erreurs, omissions ou négligences commises dans l'exercice de leurs mandats. Le plafond dédié est de 150 000 € par sinistre." }
+      }
+    ]
+  }
+];
+---
+<BaseLayout
+  title="Garanties de l'assurance multirisque immeuble : plafonds et exclusions"
+  description="Détail complet des garanties multirisque immeuble : incendie, dégâts des eaux, catastrophes, RC propriétaire, effondrement, protection juridique. Plafonds et franchises."
+  jsonld={jsonld}
+>
+  <section class="hero" style="padding: 60px 0 50px;">
+    <div class="container">
+      <p class="eyebrow">Garanties détaillées</p>
+      <h1>Le détail complet de vos garanties multirisque immeuble</h1>
+      <p class="lead">Douze garanties principales, des options ciblées et des plafonds transparents. Cette page reprend le contenu contractuel type d'un contrat MRI de référence.</p>
+      <div class="hero-actions">
+        <a href={QUOTE_HREF} class="btn btn--primary">Demander un devis</a>
+        <a href="#plafonds" class="btn btn--on-navy">Voir les plafonds</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Socle du contrat</p>
+      <h2>Les 12 garanties principales</h2>
+      <div class="grid grid--3" style="margin-top:24px;">
+        {GUARANTEES.map((g) => (
+          <div class="card">
+            <i class={`ti ${g.icon} ico`} aria-hidden="true"></i>
+            <h3>{g.title}</h3>
+            <p>{g.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <p class="eyebrow">Options recommandées</p>
+      <h2>Trois garanties optionnelles à considérer</h2>
+      <div class="grid grid--3" style="margin-top:24px;">
+        {optionnelles.map((o) => (
+          <div class="card">
+            <i class={`ti ${o.icon} ico`} aria-hidden="true"></i>
+            <h3>{o.title}</h3>
+            <p><strong>Plafond :</strong> {o.plafond}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose" id="plafonds">
+      <h2>Plafonds et limites de garantie</h2>
+      <p>Ces montants sont donnés à titre indicatif, sur la base d'un contrat multirisque immeuble standard. Ils sont indexés annuellement sur l'indice FFB (Fédération Française du Bâtiment) et peuvent être ajustés à la hausse dans les conditions particulières.</p>
+      <table>
+        <thead>
+          <tr><th>Nature de la garantie</th><th>Limite par sinistre</th></tr>
+        </thead>
+        <tbody>
+          {plafonds.map((p) => (
+            <tr><td>{p.garantie}</td><td>{p.limite}</td></tr>
+          ))}
+        </tbody>
+      </table>
+
+      <h2>Exclusions générales</h2>
+      <p>Certaines situations sont exclues des garanties, sauf mention contraire dans les conditions particulières. À titre principal :</p>
+      <ul>
+        <li>Bâtiments en cours de construction, démolition, dépollution ou réhabilitation</li>
+        <li>Logements sociaux et HLM (contrats spécifiques dédiés)</li>
+        <li>Bâtiments dont la vacance dépasse 3 mois consécutifs sans mesures de prévention</li>
+        <li>Biens situés sur des terrains classés inconstructibles par un plan de prévention des risques</li>
+        <li>Immeubles abritant certaines activités : discothèques, sex-shops, sites religieux, industries manufacturières, stations essence, entreprise de travail du bois, activités pyrotechniques</li>
+        <li>Dommages dus à la guerre, à l'énergie nucléaire, aux virus informatiques, aux moisissures et champignons résultant d'un défaut d'entretien connu de l'assuré</li>
+        <li>Amendes, condamnations pénales, sommes à rembourser à la partie adverse</li>
+      </ul>
+
+      <h2>Franchises applicables</h2>
+      <p>Une franchise reste à votre charge par sinistre. Elle est précisée dans les conditions particulières de votre contrat. Ordres de grandeur usuels :</p>
+      <ul>
+        <li>Franchise standard multirisque : 150 à 300 € selon la garantie</li>
+        <li>Franchise vol et vandalisme : 500 € (800 € pour les graffitis)</li>
+        <li>Franchise RC syndic bénévole : 500 €</li>
+        <li>Franchise catastrophes naturelles : 380 € pour l'habitation, 1 140 € minimum sinon (fixée par arrêté)</li>
+        <li>Franchise sinistre locatif dans une monopropriété avec activité commerciale non déclarée : 50 %</li>
+      </ul>
+
+      <h2 id="faq">Trois questions fréquentes sur les garanties</h2>
+      <div class="faq-block">
+        <details>
+          <summary>Que couvre la garantie effondrement de bâtiment ?</summary>
+          <p>Elle prend en charge les dommages matériels subis par le bâtiment résultant d'un effondrement total ou partiel des fondations, de la structure porteuse, des murs et de la toiture, jusqu'à 3 millions d'euros indexés. Les frais de déblais et de démolition sont inclus dans ce plafond.</p>
+        </details>
+        <details>
+          <summary>Quelle est la franchise en cas de catastrophe naturelle ?</summary>
+          <p>L'assuré conserve à sa charge le montant de la franchise légale fixée par arrêté ministériel, actuellement 380 € pour les biens à usage d'habitation et 10 % du montant des dommages avec un minimum de 1 140 € pour les autres biens.</p>
+        </details>
+        <details>
+          <summary>La RC propriétaire d'immeuble couvre-t-elle le syndic bénévole ?</summary>
+          <p>Oui, l'assureur garantit également la responsabilité civile du conseil syndical et du syndic bénévole, y compris pour les erreurs, omissions ou négligences commises dans l'exercice de leurs mandats. Le plafond dédié est de 150 000 € par sinistre, avec une franchise de 500 €.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Faire calculer le contrat sur mesure</h2>
+          <p>Nous ajustons les plafonds, les franchises et les options à la réalité de votre immeuble.</p>
+        </div>
+        <a href={QUOTE_HREF} class="btn btn--primary">Obtenir mon devis</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

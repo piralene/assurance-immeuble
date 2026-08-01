@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /forms/
+Disallow: /merci
+
+Sitemap: https://www.assurance-immeuble.fr/sitemap-index.xml

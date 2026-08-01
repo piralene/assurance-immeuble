@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, SOLUTIONS, WHY_US, GUARANTEES, STATS, QUOTE_HREF } from '../consts';
+import { getCollection } from 'astro:content';
+
+const now = new Date();
+let posts: any[] = [];
+try {
+  posts = (await getCollection('blog'))
+    .filter((p) => !p.data.draft && p.data.pubDate <= now)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3);
+} catch (e) { posts = []; }
+
+const catColors: Record<string, string> = {
+  'Copropriété & syndic': '#0b3d91',
+  'Propriétaire bailleur': '#e85d1a',
+  'Sinistres': '#b91c1c',
+  'Juridique': '#0f766e',
+  'Guide pratique': '#7c3aed',
+  default: '#0b3d91',
+};
+const catIcon: Record<string, string> = {
+  'Copropriété & syndic': 'ti-building-community',
+  'Propriétaire bailleur': 'ti-key',
+  'Sinistres': 'ti-alert-triangle',
+  'Juridique': 'ti-gavel',
+  'Guide pratique': 'ti-file-text',
+  default: 'ti-file-text',
+};
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'InsuranceAgency',
+    name: SITE.legalName,
+    url: SITE.url,
+    email: SITE.email,
+    areaServed: 'FR',
+    description: SITE.description,
+    serviceType: [
+      "Assurance multirisque immeuble",
+      "Assurance propriétaire non occupant (PNO)",
+      "Assurance copropriété",
+      "Assurance SCI",
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.url,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${SITE.url}/blog?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  },
+];
+---
+<BaseLayout jsonld={jsonld}>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Assurance immeuble depuis 1996</p>
+      <h1>L'assurance de votre immeuble, sans mauvaise surprise</h1>
+      <p class="lead">Copropriétés, propriétaires bailleurs, monopropriétés et SCI : nous mettons en concurrence les meilleurs assureurs pour sécuriser durablement votre patrimoine, tout en maîtrisant vos charges.</p>
+      <div class="hero-actions">
+        <a href={QUOTE_HREF} class="btn btn--primary">Obtenir mon devis en 24 h</a>
+        <a href="/multirisque-immeuble" class="btn btn--on-navy">Découvrir les garanties</a>
+      </div>
+      <div class="hero-trust">
+        <span><i class="ti ti-shield-check" aria-hidden="true"></i> Courtier indépendant ORIAS</span>
+        <span><i class="ti ti-clock-hour-4" aria-hidden="true"></i> Réponse sous 24 h ouvrées</span>
+        <span><i class="ti ti-currency-euro" aria-hidden="true"></i> Devis gratuit, sans engagement</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-strip">
+    <div class="container">
+      <div class="item"><i class="ti ti-award" aria-hidden="true"></i> 30 ans d'expérience</div>
+      <div class="item"><i class="ti ti-building-community" aria-hidden="true"></i> Plus de 4 500 immeubles assurés</div>
+      <div class="item"><i class="ti ti-users" aria-hidden="true"></i> 8 assureurs partenaires comparés</div>
+      <div class="item"><i class="ti ti-star" aria-hidden="true"></i> 4,8/5 avis clients vérifiés</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Nos solutions</p>
+      <h2>Une couverture adaptée à chaque statut</h2>
+      <p class="lead" style="margin-bottom:28px;">Que vous soyez syndic bénévole, propriétaire bailleur ou gérant de SCI, votre contrat est monté sur mesure à partir des risques réels de votre immeuble.</p>
+      <div class="grid grid--2">
+        {SOLUTIONS.map((s) => (
+          <article class="card">
+            <i class={`ti ${s.icon} ico`} aria-hidden="true"></i>
+            <h3>{s.title}</h3>
+            <p>{s.blurb}</p>
+            <ul>{s.points.slice(0, 4).map((p) => <li>{p}</li>)}</ul>
+            {s.href && <a href={s.href} class="card-link">En savoir plus <i class="ti ti-arrow-right" aria-hidden="true"></i></a>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <p class="eyebrow">Pourquoi nous choisir</p>
+          <h2>Le seul contrat qui compte vraiment, c'est le vôtre</h2>
+          <p class="lead">Nous ne vendons pas un produit sur étagère. Nous étudions votre immeuble, son année de construction, ses équipements, sa sinistralité, et nous négocions avec plusieurs assureurs pour vous proposer la meilleure combinaison.</p>
+          <ul class="check-list">
+            <li>Un interlocuteur unique du devis jusqu'à l'indemnisation</li>
+            <li>Comparaison de 8 compagnies partenaires à chaque cotation</li>
+            <li>Révision annuelle systématique de votre contrat</li>
+            <li>Assistance sinistre : nous parlons à l'expert à votre place</li>
+          </ul>
+          <p style="margin-top:24px;"><a href={QUOTE_HREF} class="btn btn--primary">Faire ma demande de devis</a></p>
+        </div>
+        <div>
+          <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration immeuble et courtier" style="background:#eef3fb; padding:20px; border-radius:14px;">
+            <rect x="80" y="60" width="240" height="220" fill="#fff" stroke="#0b3d91" stroke-width="2" rx="6"/>
+            <polygon points="80,60 200,20 320,60" fill="#e85d1a" stroke="#0b3d91" stroke-width="2"/>
+            <rect x="180" y="180" width="40" height="100" fill="#0b3d91"/>
+            <rect x="105" y="90" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <rect x="165" y="90" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <rect x="225" y="90" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <rect x="285" y="90" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <rect x="105" y="140" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <rect x="165" y="140" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <rect x="225" y="140" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <rect x="285" y="140" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <rect x="105" y="190" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <rect x="285" y="190" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <rect x="105" y="240" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <rect x="285" y="240" width="35" height="35" fill="#eef3fb" stroke="#0b3d91"/>
+            <circle cx="200" cy="230" r="6" fill="#d4a642"/>
+            <path d="M340 200 L370 200 L370 280 L340 280 Z" fill="#0b3d91"/>
+            <circle cx="355" cy="180" r="14" fill="#d4a642"/>
+            <text x="200" y="308" text-anchor="middle" fill="#0b3d91" font-family="Inter, sans-serif" font-size="13" font-weight="600">Votre immeuble, notre expertise</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="container">
+      <p class="eyebrow" style="color:#d4a642;">En chiffres</p>
+      <h2>La confiance se mesure</h2>
+      <div class="stats" style="margin-top:28px;">
+        {STATS.map((s) => (
+          <div class="stat">
+            <div class="val">{s.value}</div>
+            <div class="lab">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Garanties phares</p>
+      <h2>Ce que couvre votre multirisque immeuble</h2>
+      <p class="lead" style="margin-bottom:28px;">Un socle solide contre les dommages courants, et des options pour aller plus loin selon la configuration de l'immeuble.</p>
+      <div class="grid grid--4">
+        {GUARANTEES.slice(0, 8).map((g) => (
+          <div class="feature" style="background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px;">
+            <i class={`ti ${g.icon} ico`} style="color:var(--orange);" aria-hidden="true"></i>
+            <h3 style="color:var(--navy);">{g.title}</h3>
+            <p style="color:var(--muted);">{g.text}</p>
+          </div>
+        ))}
+      </div>
+      <p style="margin-top:24px;"><a href="/garanties" class="card-link">Voir toutes les garanties <i class="ti ti-arrow-right" aria-hidden="true"></i></a></p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <p class="eyebrow">Ils nous ont fait confiance</p>
+      <h2>Trois retours d'immeubles récemment assurés</h2>
+      <div class="grid grid--3" style="margin-top:24px;">
+        <div class="testi">
+          <p>"Notre ancien assureur augmentait la prime tous les ans sans jamais rien renégocier. Ici on nous a expliqué chaque ligne, comparé trois devis et on a économisé 22 % sur la cotisation, avec de meilleures garanties."</p>
+          <div class="who">Bernadette L. <span>— Présidente de conseil syndical, Lyon 6</span></div>
+        </div>
+        <div class="testi">
+          <p>"Sinistre dégât des eaux dans la cage d'escalier un dimanche soir. Le courtier a appelé l'expert dès le lundi matin, on a été indemnisés en trois semaines. C'est ce qui fait la différence."</p>
+          <div class="who">Karim B. <span>— Syndic bénévole, Marseille</span></div>
+        </div>
+        <div class="testi">
+          <p>"Je détiens quatre appartements en location dans le nord. Ils m'ont proposé un contrat PNO groupé sur les quatre biens, plus lisible et 30 % moins cher que mes quatre polices séparées."</p>
+          <div class="who">Marc T. <span>— Propriétaire bailleur, Roubaix</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {posts.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;">
+          <h2 style="margin:0;">Guides et actualités</h2>
+          <a href="/blog" class="card-link">Voir tous les guides <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="grid grid--3" style="margin-top:22px;">
+          {posts.map((p) => (
+            <article class="post-card">
+              <div class="thumb" style={`background:${catColors[p.data.category] ?? catColors.default}`}>
+                <i class={`ti ${catIcon[p.data.category] ?? catIcon.default}`} aria-hidden="true"></i>
+              </div>
+              <div class="body">
+                <span class="cat">{p.data.category}</span>
+                <h3><a href={`/blog/${p.id}`}>{p.data.title}</a></h3>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Un devis pour votre immeuble ?</h2>
+          <p>Formulaire simple, réponse personnalisée sous 24 h ouvrées. Gratuit et sans engagement.</p>
+        </div>
+        <a href={QUOTE_HREF} class="btn btn--primary">Demander mon devis</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

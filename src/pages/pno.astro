@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { QUOTE_HREF } from '../consts';
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Assurance PNO propriétaire non occupant',
+    description: "Assurance PNO obligatoire depuis la loi ALUR pour les propriétaires bailleurs en copropriété. Couverture bâtiment, recours des voisins et des tiers, responsabilité civile.",
+    brand: { '@type': 'Brand', name: 'assurance-immeuble.fr' },
+    category: 'Insurance',
+  },
+];
+---
+<BaseLayout
+  title="Assurance PNO propriétaire non occupant : garanties et obligation"
+  description="Assurance PNO obligatoire depuis la loi ALUR. Vacance locative, défaut d'assurance du locataire, recours des voisins et des tiers : devis en 24 h."
+  jsonld={jsonld}
+>
+  <section class="hero" style="padding: 60px 0 50px;">
+    <div class="container">
+      <p class="eyebrow">Propriétaire bailleur</p>
+      <h1>Assurance PNO : la protection obligatoire du propriétaire non occupant</h1>
+      <p class="lead">Depuis la loi ALUR de 2014, tout copropriétaire bailleur doit être assuré au minimum en responsabilité civile. Nous montons un contrat PNO complet, à un tarif juste.</p>
+      <div class="hero-actions">
+        <a href={QUOTE_HREF} class="btn btn--primary">Devis PNO en 24 h</a>
+        <a href="#garanties" class="btn btn--on-navy">Voir ce qui est couvert</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <h2>Qu'est-ce que l'assurance PNO ?</h2>
+      <p>L'assurance <strong>propriétaire non occupant</strong> couvre un bien immobilier mis en location, entre les mains d'un locataire ou vacant. Elle intervient dans trois situations que l'assurance du locataire ne couvre pas :</p>
+      <ol>
+        <li>Le logement est <strong>vacant</strong> entre deux locations (pas de locataire, donc pas d'assurance locataire).</li>
+        <li>Le locataire est en <strong>défaut d'assurance</strong> ou a laissé son contrat se résilier sans le savoir.</li>
+        <li>Le sinistre engage la <strong>responsabilité du propriétaire</strong> et non celle du locataire : défaut d'entretien, vice de construction, sinistre venant de l'immeuble lui-même.</li>
+      </ol>
+
+      <h2>L'obligation légale depuis la loi ALUR</h2>
+      <p>La loi n° 2014-366 du 24 mars 2014, dite loi ALUR, a modifié la loi du 10 juillet 1965 sur la copropriété. Son <strong>article 9-1</strong> impose à tout copropriétaire, occupant ou non, de souscrire une assurance couvrant sa responsabilité civile.</p>
+      <blockquote>« Chaque copropriétaire est tenu de s'assurer contre les risques de responsabilité civile dont il doit répondre en sa qualité soit de copropriétaire occupant, soit de copropriétaire non occupant. »</blockquote>
+      <p>En pratique, le syndic est en droit de vous demander votre attestation d'assurance chaque année. En l'absence de couverture, votre responsabilité personnelle est engagée en cas de sinistre venant de votre lot, sans aucun assureur pour vous défendre.</p>
+
+      <h2 id="garanties">Ce que garantit notre contrat PNO</h2>
+      <p>Nos contrats vont bien au-delà du minimum légal de responsabilité civile. Ils comprennent notamment :</p>
+      <ul>
+        <li><strong>Dommages au bâtiment</strong> : incendie, explosion, dégât des eaux, événements climatiques, vol dans le logement vacant, catastrophes naturelles et technologiques.</li>
+        <li><strong>Recours des voisins et des tiers</strong> : si un sinistre venant de votre lot cause un dommage aux voisins ou aux parties communes.</li>
+        <li><strong>Défaut d'assurance du locataire</strong> : si votre locataire n'est pas assuré ou insuffisamment couvert, notre contrat prend le relais.</li>
+        <li><strong>Perte de loyers</strong> pendant la remise en état après un sinistre garanti.</li>
+        <li><strong>Contenu propriétaire</strong> en option : mobilier fourni en location meublée, cuisine équipée, électroménager.</li>
+        <li><strong>Protection juridique</strong> : litiges avec locataire, syndic, voisins ou administrations.</li>
+      </ul>
+
+      <h2>Cas particuliers</h2>
+      <h3>Location meublée et LMNP</h3>
+      <p>La location meublée impose de couvrir le contenu propriétaire mis à disposition. Notre contrat inclut une garantie contenu adaptée, jusqu'aux montants indiqués dans les conditions particulières.</p>
+
+      <h3>Location saisonnière et courte durée</h3>
+      <p>Airbnb, Abritel, Booking : les locations courtes multiplient les risques de dégradations et d'usage inapproprié. Une option "location saisonnière" ajuste les garanties, notamment la responsabilité civile et le vol.</p>
+
+      <h3>Logement vacant</h3>
+      <p>Un logement vacant plus de trois mois consécutifs est généralement exclu du contrat multirisque immeuble collectif. La PNO reprend le relais et couvre le bien pendant la vacance, sous réserve d'entretien courant et de mesures de prévention.</p>
+
+      <h3>Bail commercial ou professionnel</h3>
+      <p>Nos contrats PNO couvrent également les locaux loués à des professionnels : commerce en pied d'immeuble, cabinet libéral, bureau. La cotisation est ajustée en fonction de l'activité exercée.</p>
+
+      <p style="margin-top:24px;"><a href={QUOTE_HREF} class="btn btn--primary">Obtenir un devis PNO</a></p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <h2>Portefeuille de biens : le contrat groupé</h2>
+          <p>Si vous détenez plusieurs biens en location, nous montons un <strong>contrat PNO multi-sites</strong> qui centralise l'ensemble sur une seule police, une seule échéance et un seul interlocuteur.</p>
+          <ul class="check-list">
+            <li>Économie de 15 à 30 % par rapport à des contrats séparés</li>
+            <li>Ajout ou retrait d'un lot en cours d'année</li>
+            <li>Attestations envoyées automatiquement à chaque syndic</li>
+            <li>Un seul contact sinistre pour tout le portefeuille</li>
+          </ul>
+          <p style="margin-top:24px;"><a href={QUOTE_HREF} class="btn btn--primary">Étudier mon portefeuille</a></p>
+        </div>
+        <div>
+          <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration portefeuille de biens locatifs" style="background:#fff; padding:20px; border-radius:14px; border:1px solid #e6e8ee;">
+            <g transform="translate(20,40)">
+              <rect x="0" y="80" width="80" height="140" fill="#0b3d91" rx="4"/>
+              <rect x="15" y="100" width="20" height="20" fill="#eef3fb"/>
+              <rect x="45" y="100" width="20" height="20" fill="#eef3fb"/>
+              <rect x="15" y="140" width="20" height="20" fill="#eef3fb"/>
+              <rect x="45" y="140" width="20" height="20" fill="#eef3fb"/>
+              <rect x="15" y="180" width="20" height="20" fill="#eef3fb"/>
+              <rect x="45" y="180" width="20" height="20" fill="#eef3fb"/>
+              <polygon points="0,80 40,50 80,80" fill="#e85d1a"/>
+            </g>
+            <g transform="translate(120,20)">
+              <rect x="0" y="80" width="90" height="180" fill="#0b3d91" rx="4"/>
+              <rect x="18" y="100" width="22" height="22" fill="#eef3fb"/>
+              <rect x="50" y="100" width="22" height="22" fill="#eef3fb"/>
+              <rect x="18" y="140" width="22" height="22" fill="#eef3fb"/>
+              <rect x="50" y="140" width="22" height="22" fill="#eef3fb"/>
+              <rect x="18" y="180" width="22" height="22" fill="#eef3fb"/>
+              <rect x="50" y="180" width="22" height="22" fill="#eef3fb"/>
+              <rect x="18" y="220" width="22" height="22" fill="#eef3fb"/>
+              <rect x="50" y="220" width="22" height="22" fill="#eef3fb"/>
+              <polygon points="0,80 45,50 90,80" fill="#e85d1a"/>
+            </g>
+            <g transform="translate(240,40)">
+              <rect x="0" y="80" width="80" height="140" fill="#0b3d91" rx="4"/>
+              <rect x="15" y="100" width="20" height="20" fill="#eef3fb"/>
+              <rect x="45" y="100" width="20" height="20" fill="#eef3fb"/>
+              <rect x="15" y="140" width="20" height="20" fill="#eef3fb"/>
+              <rect x="45" y="140" width="20" height="20" fill="#eef3fb"/>
+              <rect x="15" y="180" width="20" height="20" fill="#eef3fb"/>
+              <rect x="45" y="180" width="20" height="20" fill="#eef3fb"/>
+              <polygon points="0,80 40,50 80,80" fill="#e85d1a"/>
+            </g>
+            <circle cx="200" cy="285" r="18" fill="#d4a642"/>
+            <text x="200" y="291" text-anchor="middle" fill="#0b3d91" font-family="Inter, sans-serif" font-size="16" font-weight="700">1</text>
+            <text x="200" y="315" text-anchor="middle" fill="#0b3d91" font-family="Inter, sans-serif" font-size="12" font-weight="600">contrat pour tout votre portefeuille</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Combien pour mon assurance PNO ?</h2>
+          <p>À partir de 65 € par an pour un studio, quelques centaines d'euros pour un immeuble entier. Le mieux : demander votre devis.</p>
+        </div>
+        <a href={QUOTE_HREF} class="btn btn--primary">Devis PNO</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

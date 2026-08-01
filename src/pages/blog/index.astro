@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const now = new Date();
+let allPosts: any[] = [];
+try {
+  allPosts = (await getCollection('blog'))
+    .filter((p) => !p.data.draft && p.data.pubDate <= now)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+} catch (e) { allPosts = []; }
+
+const categories = Array.from(new Set(allPosts.map((p) => p.data.category))).sort();
+
+const catColors: Record<string, string> = {
+  'Copropriété & syndic': '#0b3d91',
+  'Propriétaire bailleur': '#e85d1a',
+  'Sinistres': '#b91c1c',
+  'Juridique': '#0f766e',
+  'Guide pratique': '#7c3aed',
+  default: '#0b3d91',
+};
+const catIcon: Record<string, string> = {
+  'Copropriété & syndic': 'ti-building-community',
+  'Propriétaire bailleur': 'ti-key',
+  'Sinistres': 'ti-alert-triangle',
+  'Juridique': 'ti-gavel',
+  'Guide pratique': 'ti-file-text',
+  default: 'ti-file-text',
+};
+---
+<BaseLayout
+  title="Guides et actualités de l'assurance d'immeuble"
+  description="Guides pratiques, décryptages juridiques et retours d'expérience sur l'assurance des immeubles en copropriété, monopropriété, SCI et PNO."
+>
+  <section class="hero" style="padding: 60px 0 50px;">
+    <div class="container">
+      <p class="eyebrow">Blog et guides</p>
+      <h1>Comprendre votre assurance d'immeuble</h1>
+      <p class="lead">Trente articles pratiques pour éclairer les copropriétaires, syndics, propriétaires bailleurs et gérants de SCI sur leurs droits, leurs obligations et leurs recours.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {categories.length > 0 && (
+        <div class="cat-filter" data-cat-filter>
+          <button class="active" data-cat="all">Tous les guides</button>
+          {categories.map((c) => <button data-cat={c}>{c}</button>)}
+        </div>
+      )}
+      {allPosts.length === 0 && (
+        <p class="lead">Les premiers guides seront publiés prochainement.</p>
+      )}
+      <div class="grid grid--3" data-post-grid>
+        {allPosts.map((p) => (
+          <article class="post-card" data-post-cat={p.data.category}>
+            <div class="thumb" style={`background:${catColors[p.data.category] ?? catColors.default}`}>
+              <i class={`ti ${catIcon[p.data.category] ?? catIcon.default}`} aria-hidden="true"></i>
+            </div>
+            <div class="body">
+              <span class="cat">{p.data.category}</span>
+              <h3><a href={`/blog/${p.id}`}>{p.data.title}</a></h3>
+              <p style="color:var(--muted); font-size:14px; margin:8px 0 0;">{p.data.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function() {
+      const buttons = document.querySelectorAll('[data-cat-filter] button');
+      const cards = document.querySelectorAll('[data-post-cat]');
+      buttons.forEach((b) => b.addEventListener('click', () => {
+        buttons.forEach((x) => x.classList.remove('active'));
+        b.classList.add('active');
+        const cat = b.dataset.cat;
+        cards.forEach((c) => {
+          c.style.display = (cat === 'all' || c.dataset.postCat === cat) ? '' : 'none';
+        });
+      }));
+    })();
+  </script>
+</BaseLayout>

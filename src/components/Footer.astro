@@ -1,0 +1,36 @@
+---
+import { SITE, NAV } from '../consts';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="grid grid--4">
+      <div>
+        <div class="brand">assurance-<span style="color:var(--orange)">immeuble</span>.fr</div>
+        <p style="margin-top:10px;">{SITE.legalName}. Courtier en assurances immatriculé à l'ORIAS, spécialisé dans l'assurance des immeubles en France métropolitaine.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p style="margin:0;">Devis en ligne 24 h / 24</p>
+        <p style="margin:6px 0 0;"><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p style="margin:12px 0 0;"><a href="/demande-devis" class="btn btn--primary" style="padding:8px 14px; font-size:13px;">Demander un devis</a></p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        {NAV.map((i) => <p style="margin:0 0 6px;"><a href={i.href}>{i.label}</a></p>)}
+      </div>
+      <div>
+        <h4>Nos solutions</h4>
+        <p style="margin:0 0 6px;"><a href="/multirisque-immeuble">Multirisque immeuble</a></p>
+        <p style="margin:0 0 6px;"><a href="/pno">Assurance PNO</a></p>
+        <p style="margin:0 0 6px;"><a href="/multirisque-immeuble#syndic-benevole">Syndic bénévole</a></p>
+        <p style="margin:0 0 6px;"><a href="/multirisque-immeuble#sci">SCI et monopropriété</a></p>
+        <p style="margin:0 0 6px;"><a href="/sinistres">Déclarer un sinistre</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} {SITE.name}. Tous droits réservés.</span>
+      <span><a href="/mentions-legales">Mentions légales</a> · <a href="/politique-confidentialite">Confidentialité</a> · <a href="/demande-devis">Demander un devis</a></span>
+    </div>
+  </div>
+</footer>

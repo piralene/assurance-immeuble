@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { QUOTE_HREF } from '../consts';
+
+const etapes = [
+  { num: 1, title: "Sécuriser les lieux", text: "Prenez d'abord toutes les mesures conservatoires : coupure d'eau, d'électricité, protection des biens sauvables. Photographiez les dommages avant tout nettoyage." },
+  { num: 2, title: "Nous prévenir sans attendre", text: "Contactez-nous par email ou téléphone dans les 5 jours ouvrés (2 jours en cas de vol, 30 jours pour une catastrophe naturelle après publication de l'arrêté)." },
+  { num: 3, title: "Déclarer le sinistre", text: "Nous rédigeons la déclaration avec vous : nature, date, circonstances, causes, conséquences, estimatif des dommages, autres contrats susceptibles d'intervenir." },
+  { num: 4, title: "Rendez-vous avec l'expert", text: "Selon le montant du sinistre, l'assureur missionne un expert. Nous vous préparons au rendez-vous et vous accompagnons si nécessaire." },
+  { num: 5, title: "Chiffrage et accord amiable", text: "Nous relisons le rapport d'expertise, contestons les points litigieux et négocions le meilleur montant d'indemnisation." },
+  { num: 6, title: "Versement de l'indemnité", text: "Le règlement intervient dans la semaine suivant l'accord amiable (3 mois pour les catastrophes naturelles à compter de la publication de l'arrêté)." },
+];
+---
+<BaseLayout
+  title="Déclarer un sinistre sur votre immeuble : la marche à suivre"
+  description="Sinistre dégât des eaux, incendie, vol, catastrophe naturelle : les étapes de déclaration, les délais et notre accompagnement du diagnostic à l'indemnisation."
+>
+  <section class="hero" style="padding: 60px 0 50px;">
+    <div class="container">
+      <p class="eyebrow">Sinistres</p>
+      <h1>Un sinistre sur votre immeuble ? Voici la marche à suivre</h1>
+      <p class="lead">Chaque minute compte. Nous vous accompagnons du premier appel à l'expert jusqu'au versement de l'indemnité.</p>
+      <div class="hero-actions">
+        <a href="/demande-devis?motif=sinistre" class="btn btn--primary">Déclarer un sinistre</a>
+        <a href="#etapes" class="btn btn--on-navy">Voir les étapes</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="etapes">
+    <div class="container prose">
+      <h2>Les six étapes d'une déclaration bien menée</h2>
+    </div>
+    <div class="container" style="margin-top:20px;">
+      <div class="grid grid--3">
+        {etapes.map((e) => (
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+              <span style="width:36px;height:36px;background:var(--orange);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;">{e.num}</span>
+              <h3 style="margin:0;">{e.title}</h3>
+            </div>
+            <p>{e.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container prose">
+      <h2>Les délais à respecter absolument</h2>
+      <table>
+        <thead><tr><th>Type de sinistre</th><th>Délai de déclaration</th></tr></thead>
+        <tbody>
+          <tr><td>Vol, cambriolage, vandalisme</td><td>2 jours ouvrés (avec dépôt de plainte dans les 24 h)</td></tr>
+          <tr><td>Incendie, dégât des eaux, événement climatique</td><td>5 jours ouvrés</td></tr>
+          <tr><td>Catastrophe naturelle</td><td>30 jours suivant la publication de l'arrêté au Journal Officiel</td></tr>
+          <tr><td>Attentat, acte de terrorisme</td><td>5 jours ouvrés</td></tr>
+          <tr><td>Bris de glace, dommage électrique</td><td>5 jours ouvrés</td></tr>
+        </tbody>
+      </table>
+      <p>Passé ces délais, l'assureur peut opposer la déchéance de garantie si le retard lui cause un préjudice.</p>
+
+      <h2>Dégât des eaux en copropriété : la convention IRSI</h2>
+      <p>Depuis le 1er juin 2018, les sinistres dégât des eaux et incendie inférieurs à 5 000 € HT en copropriété sont traités selon la convention <strong>IRSI</strong> (Indemnisation et Recours des Sinistres Immeubles). Un assureur unique, dit "gestionnaire", prend en charge l'ensemble des dommages et se retourne ensuite contre les autres assureurs. Cela simplifie considérablement le traitement pour les copropriétaires.</p>
+
+      <h2>Sinistre incendie : premières heures</h2>
+      <p>En cas d'incendie, la déclaration à l'assureur doit être précédée :</p>
+      <ul>
+        <li>De l'appel aux pompiers (18 ou 112)</li>
+        <li>De la mise en sécurité de l'immeuble et des occupants</li>
+        <li>De la récupération du rapport d'intervention des pompiers (à demander à la caserne)</li>
+        <li>De la constatation officielle des dégâts avant tout nettoyage</li>
+      </ul>
+      <p>Ces éléments seront demandés dans le dossier d'expertise et conditionnent la rapidité de l'indemnisation.</p>
+
+      <h2>Catastrophe naturelle : la procédure spécifique</h2>
+      <p>La garantie ne se déclenche qu'après publication d'un arrêté interministériel constatant l'état de catastrophe naturelle pour la commune concernée. Le maire dépose une demande de reconnaissance auprès de la préfecture, puis la commission interministérielle statue. Une fois l'arrêté publié, vous avez 30 jours pour déclarer le sinistre.</p>
+      <p>Le règlement de l'indemnité intervient dans un délai de 3 mois à compter de la date la plus tardive entre :</p>
+      <ul>
+        <li>La remise de l'état estimatif des biens endommagés</li>
+        <li>La date de publication de l'arrêté interministériel</li>
+      </ul>
+
+      <p style="margin-top:24px;"><a href="/demande-devis?motif=sinistre" class="btn btn--primary">Nous contacter pour un sinistre</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Pas encore assuré chez nous ?</h2>
+          <p>Nous pouvons quand même vous conseiller. Contactez-nous, la première prise de contact est gratuite.</p>
+        </div>
+        <a href={QUOTE_HREF} class="btn btn--primary">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

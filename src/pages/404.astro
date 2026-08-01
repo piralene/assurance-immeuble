@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page introuvable" description="La page demandée n'existe pas ou plus." noindex={true}>
+  <section class="section" style="min-height: 55vh;">
+    <div class="container prose" style="text-align:center;">
+      <p class="eyebrow">Erreur 404</p>
+      <h1>Cette page n'existe pas</h1>
+      <p class="lead">Le lien est peut-être obsolète, ou la page a été déplacée.</p>
+      <p style="margin-top:24px;">
+        <a href="/" class="btn btn--primary">Retour à l'accueil</a>
+        <a href="/multirisque-immeuble" class="btn btn--ghost" style="margin-left:12px;">Voir nos solutions</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

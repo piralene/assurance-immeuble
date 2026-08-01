@@ -1,0 +1,291 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Demander un devis d'assurance immeuble"
+  description="Formulaire de devis multirisque immeuble ou PNO en 5 étapes. Réponse personnalisée sous 24 h ouvrées, gratuit et sans engagement."
+  noindex={false}
+>
+  <section class="hero" style="padding: 50px 0 40px;">
+    <div class="container">
+      <p class="eyebrow">Devis en 5 minutes</p>
+      <h1>Votre devis d'assurance immeuble</h1>
+      <p class="lead">Un formulaire simple et guidé, sans jargon. Vous recevez un devis personnalisé sous 24 h ouvrées.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <form
+        class="wizard"
+        name="devis-immeuble"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/merci"
+        id="wizard-form"
+      >
+        <input type="hidden" name="form-name" value="devis-immeuble" />
+        <p style="display:none;"><label>Ne pas remplir : <input name="bot-field" /></label></p>
+
+        <div class="wizard-progress">
+          <div class="step current" data-step-bar="1"></div>
+          <div class="step" data-step-bar="2"></div>
+          <div class="step" data-step-bar="3"></div>
+          <div class="step" data-step-bar="4"></div>
+          <div class="step" data-step-bar="5"></div>
+          <span class="label" data-step-label>Étape 1 / 5</span>
+        </div>
+
+        <!-- Étape 1 : type de bien -->
+        <div class="wizard-step active" data-step="1">
+          <h3>Quel type de bien souhaitez-vous assurer ?</h3>
+          <p class="hint">Sélectionnez la situation qui correspond le mieux à votre immeuble.</p>
+          <div class="choice-grid">
+            <div class="choice"><input type="radio" name="type_bien" id="tb1" value="Copropriété" required /><label for="tb1"><i class="ti ti-building-community"></i> Copropriété</label></div>
+            <div class="choice"><input type="radio" name="type_bien" id="tb2" value="Monopropriété" /><label for="tb2"><i class="ti ti-building-skyscraper"></i> Monopropriété</label></div>
+            <div class="choice"><input type="radio" name="type_bien" id="tb3" value="PNO propriétaire bailleur" /><label for="tb3"><i class="ti ti-key"></i> PNO propriétaire bailleur</label></div>
+            <div class="choice"><input type="radio" name="type_bien" id="tb4" value="SCI ou société immobilière" /><label for="tb4"><i class="ti ti-briefcase"></i> SCI / société immobilière</label></div>
+            <div class="choice"><input type="radio" name="type_bien" id="tb5" value="Immeuble mixte habitation / commerce" /><label for="tb5"><i class="ti ti-building-store"></i> Mixte habitation / commerce</label></div>
+            <div class="choice"><input type="radio" name="type_bien" id="tb6" value="Immeuble en rénovation" /><label for="tb6"><i class="ti ti-tool"></i> Immeuble en rénovation</label></div>
+          </div>
+          <div class="wizard-actions">
+            <span></span>
+            <button type="button" class="btn btn--primary" data-next>Suivant <i class="ti ti-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Étape 2 : caractéristiques immeuble -->
+        <div class="wizard-step" data-step="2">
+          <h3>Caractéristiques de l'immeuble</h3>
+          <p class="hint">Les informations techniques pour calibrer votre contrat.</p>
+          <div class="field-row">
+            <div class="field">
+              <label>Année de construction <span class="req">*</span></label>
+              <input type="number" name="annee_construction" min="1700" max="2030" placeholder="Ex : 1968" required />
+            </div>
+            <div class="field">
+              <label>Nombre de lots <span class="req">*</span></label>
+              <input type="number" name="nb_lots" min="1" placeholder="Ex : 12" required />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Surface totale déclarée (m²) <span class="req">*</span></label>
+              <input type="number" name="surface" min="20" placeholder="Ex : 850" required />
+            </div>
+            <div class="field">
+              <label>Nombre d'étages</label>
+              <input type="number" name="nb_etages" min="0" placeholder="Ex : 4" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Nature de la construction principale</label>
+            <select name="materiaux">
+              <option value="">— Sélectionner —</option>
+              <option>Matériaux durs (pierre, brique, béton) — au moins 90 %</option>
+              <option>Matériaux mixtes</option>
+              <option>Matériaux légers (bois, matières plastiques)</option>
+              <option>Je ne sais pas</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Équipements collectifs (plusieurs choix possibles)</label>
+            <div class="choice-grid">
+              <div class="choice"><input type="checkbox" name="equip[]" id="eq1" value="Ascenseur" /><label for="eq1"><i class="ti ti-elevator"></i> Ascenseur</label></div>
+              <div class="choice"><input type="checkbox" name="equip[]" id="eq2" value="Chaufferie collective" /><label for="eq2"><i class="ti ti-flame"></i> Chaufferie collective</label></div>
+              <div class="choice"><input type="checkbox" name="equip[]" id="eq3" value="Panneaux solaires" /><label for="eq3"><i class="ti ti-solar-panel"></i> Panneaux solaires / photovoltaïque</label></div>
+              <div class="choice"><input type="checkbox" name="equip[]" id="eq4" value="Parking souterrain" /><label for="eq4"><i class="ti ti-car"></i> Parking souterrain</label></div>
+              <div class="choice"><input type="checkbox" name="equip[]" id="eq5" value="Piscine collective" /><label for="eq5"><i class="ti ti-pool"></i> Piscine collective</label></div>
+              <div class="choice"><input type="checkbox" name="equip[]" id="eq6" value="Digicode / vidéophone" /><label for="eq6"><i class="ti ti-shield-lock"></i> Digicode / vidéophone</label></div>
+            </div>
+          </div>
+          <div class="wizard-actions">
+            <button type="button" class="btn btn--ghost" data-prev><i class="ti ti-arrow-left"></i> Précédent</button>
+            <button type="button" class="btn btn--primary" data-next>Suivant <i class="ti ti-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Étape 3 : localisation et usage -->
+        <div class="wizard-step" data-step="3">
+          <h3>Adresse et usage de l'immeuble</h3>
+          <p class="hint">L'adresse précise permet de vérifier le zonage catastrophes naturelles et l'exposition aux risques.</p>
+          <div class="field">
+            <label>Adresse de l'immeuble <span class="req">*</span></label>
+            <input type="text" name="adresse" placeholder="Numéro, rue" required />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Code postal <span class="req">*</span></label>
+              <input type="text" name="code_postal" pattern="[0-9]{5}" placeholder="75001" required />
+            </div>
+            <div class="field">
+              <label>Ville <span class="req">*</span></label>
+              <input type="text" name="ville" required />
+            </div>
+          </div>
+          <div class="field">
+            <label>Usage principal de l'immeuble</label>
+            <select name="usage">
+              <option value="">— Sélectionner —</option>
+              <option>100 % habitation</option>
+              <option>Habitation + commerce en rez-de-chaussée</option>
+              <option>Habitation + activité professionnelle (bureau, cabinet)</option>
+              <option>100 % bureau ou professionnel</option>
+              <option>Location saisonnière / courte durée</option>
+              <option>Immeuble vacant temporairement</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Statut particulier</label>
+            <div class="choice-grid">
+              <div class="choice"><input type="checkbox" name="statut[]" id="st1" value="Monument historique" /><label for="st1"><i class="ti ti-building-monument"></i> Monument historique</label></div>
+              <div class="choice"><input type="checkbox" name="statut[]" id="st2" value="Immeuble de grande hauteur (IGH)" /><label for="st2"><i class="ti ti-building-skyscraper"></i> Immeuble grande hauteur</label></div>
+            </div>
+          </div>
+          <div class="wizard-actions">
+            <button type="button" class="btn btn--ghost" data-prev><i class="ti ti-arrow-left"></i> Précédent</button>
+            <button type="button" class="btn btn--primary" data-next>Suivant <i class="ti ti-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Étape 4 : sinistralité et contrat actuel -->
+        <div class="wizard-step" data-step="4">
+          <h3>Sinistralité et contrat actuel</h3>
+          <p class="hint">Ces informations conditionnent la tarification. Soyez sincère, elles seront revérifiées.</p>
+          <div class="field">
+            <label>Nombre de sinistres déclarés sur les 3 dernières années</label>
+            <select name="nb_sinistres">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4 ou plus</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Nature des principaux sinistres (si connu)</label>
+            <textarea name="nature_sinistres" placeholder="Ex : dégât des eaux venant du 3e étage, coût 4 500 € ; vandalisme dans la cage d'escalier..."></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Êtes-vous actuellement assuré ?</label>
+              <select name="deja_assure">
+                <option>Oui</option>
+                <option>Non</option>
+                <option>Contrat en cours de résiliation</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Cotisation annuelle actuelle (€ TTC)</label>
+              <input type="number" name="cotisation_actuelle" placeholder="Ex : 1850" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Date d'échéance du contrat actuel</label>
+            <input type="text" name="echeance" placeholder="JJ/MM/AAAA" />
+          </div>
+          <div class="wizard-actions">
+            <button type="button" class="btn btn--ghost" data-prev><i class="ti ti-arrow-left"></i> Précédent</button>
+            <button type="button" class="btn btn--primary" data-next>Suivant <i class="ti ti-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Étape 5 : contact -->
+        <div class="wizard-step" data-step="5">
+          <h3>Vos coordonnées</h3>
+          <p class="hint">Un conseiller vous rappelle sous 24 h ouvrées avec votre devis personnalisé.</p>
+          <div class="field">
+            <label>Votre qualité</label>
+            <select name="qualite">
+              <option>Propriétaire particulier</option>
+              <option>Syndic bénévole</option>
+              <option>Président de conseil syndical</option>
+              <option>Gérant de SCI</option>
+              <option>Syndic professionnel</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Prénom <span class="req">*</span></label>
+              <input type="text" name="prenom" required />
+            </div>
+            <div class="field">
+              <label>Nom <span class="req">*</span></label>
+              <input type="text" name="nom" required />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Email <span class="req">*</span></label>
+              <input type="email" name="email" required />
+            </div>
+            <div class="field">
+              <label>Téléphone <span class="req">*</span></label>
+              <input type="tel" name="telephone" required />
+            </div>
+          </div>
+          <div class="field">
+            <label>Message complémentaire</label>
+            <textarea name="message" placeholder="Précisions, contexte, question spécifique..."></textarea>
+          </div>
+          <div class="field">
+            <label style="font-weight:400; font-size:13px; color:var(--muted);">
+              <input type="checkbox" name="rgpd" required style="width:auto; margin-right:6px;" />
+              J'accepte que mes données soient utilisées pour l'établissement de mon devis. Voir notre <a href="/politique-confidentialite">politique de confidentialité</a>.
+            </label>
+          </div>
+          <div class="wizard-actions">
+            <button type="button" class="btn btn--ghost" data-prev><i class="ti ti-arrow-left"></i> Précédent</button>
+            <button type="submit" class="btn btn--primary">Envoyer ma demande <i class="ti ti-send"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function() {
+      const form = document.getElementById('wizard-form');
+      if (!form) return;
+      const steps = form.querySelectorAll('.wizard-step');
+      const bars = form.querySelectorAll('[data-step-bar]');
+      const label = form.querySelector('[data-step-label]');
+      let current = 1;
+      const total = steps.length;
+
+      function show(n) {
+        steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
+        bars.forEach(b => {
+          const i = +b.dataset.stepBar;
+          b.classList.toggle('done', i < n);
+          b.classList.toggle('current', i === n);
+        });
+        if (label) label.textContent = `Étape ${n} / ${total}`;
+        window.scrollTo({ top: form.offsetTop - 80, behavior: 'smooth' });
+      }
+
+      function validateStep(n) {
+        const step = form.querySelector(`.wizard-step[data-step="${n}"]`);
+        const required = step.querySelectorAll('[required]');
+        for (const el of required) {
+          if (!el.checkValidity()) { el.reportValidity(); return false; }
+        }
+        return true;
+      }
+
+      form.querySelectorAll('[data-next]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (!validateStep(current)) return;
+          if (current < total) { current++; show(current); }
+        });
+      });
+      form.querySelectorAll('[data-prev]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (current > 1) { current--; show(current); }
+        });
+      });
+    })();
+  </script>
+</BaseLayout>

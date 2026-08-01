@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((p) => ({ params: { id: p.id }, props: { post: p } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+const dateStr = d.pubDate.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const registerLabel: Record<string, string> = {
+  recit: 'Récit',
+  information: 'Guide pratique',
+  juridique: 'Analyse juridique',
+};
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: d.title,
+    description: d.description,
+    datePublished: d.pubDate.toISOString(),
+    author: { '@type': 'Organization', name: 'assurance-immeuble.fr' },
+    publisher: { '@type': 'Organization', name: 'assurance-immeuble.fr' },
+    articleSection: d.category,
+  },
+];
+if (d.faq && d.faq.length > 0) {
+  jsonld.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: d.faq.map((q) => ({
+      '@type': 'Question',
+      name: q.q,
+      acceptedAnswer: { '@type': 'Answer', text: q.a },
+    })),
+  } as any);
+}
+---
+<BaseLayout title={d.title} description={d.description} jsonld={jsonld}>
+  <section class="section" style="padding-top: 32px;">
+    <div class="container">
+      <nav class="breadcrumb"><a href="/">Accueil</a> / <a href="/blog">Guides</a> / <span>{d.title}</span></nav>
+    </div>
+  </section>
+  <article class="section" style="padding-top: 8px;">
+    <div class="container">
+      <header class="article-head">
+        <div class="article-meta">
+          <span class="tag">{d.category}</span>
+          {d.register && <span class="tag" style="background:#fff5ef; color:var(--orange);">{registerLabel[d.register]}</span>}
+          <span>{dateStr}</span>
+        </div>
+        <h1>{d.title}</h1>
+        <p class="lead">{d.description}</p>
+      </header>
+    </div>
+    <div class="container">
+      <div class="prose">
+        <Content />
+      </div>
+      {d.faq && d.faq.length > 0 && (
+        <div class="faq-block">
+          <h2 style="margin-bottom:8px;">Questions fréquentes</h2>
+          {d.faq.map((q) => (
+            <details>
+              <summary>{q.q}</summary>
+              <p>{q.a}</p>
+            </details>
+          ))}
+        </div>
+      )}
+    </div>
+  </article>
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Un devis pour votre immeuble ?</h2>
+          <p>Réponse personnalisée sous 24 h ouvrées, gratuite et sans engagement.</p>
+        </div>
+        <a href="/demande-devis" class="btn btn--primary">Demander mon devis</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
