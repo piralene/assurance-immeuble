@@ -17,6 +17,7 @@ const registerLabel: Record<string, string> = {
   information: 'Guide pratique',
   juridique: 'Analyse juridique',
 };
+const showRegisterTag = d.register && registerLabel[d.register] !== d.category;
 
 const jsonld = [
   {
@@ -53,7 +54,7 @@ if (d.faq && d.faq.length > 0) {
       <header class="article-head">
         <div class="article-meta">
           <span class="tag">{d.category}</span>
-          {d.register && <span class="tag" style="background:#fff5ef; color:var(--orange);">{registerLabel[d.register]}</span>}
+          {showRegisterTag && <span class="tag" style="background:#fff5ef; color:var(--orange);">{registerLabel[d.register!]}</span>}
           <span>{dateStr}</span>
         </div>
         <h1>{d.title}</h1>
