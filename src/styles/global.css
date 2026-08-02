@@ -176,6 +176,8 @@ h3 { font-size: 19px; }
 .cat-filter button { background: var(--bg); border: 1px solid var(--line); color: var(--ink); padding: 7px 14px; border-radius: 999px; font-size: 13px; cursor: pointer; }
 .cat-filter button.active { background: var(--navy); color: #fff; border-color: var(--navy); }
 
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
 .wizard { max-width: 720px; margin: 0 auto; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; }
 .wizard-progress { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
 .wizard-progress .step { flex: 1; height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; }

@@ -9,16 +9,44 @@ interface Props {
   description?: string;
   noindex?: boolean;
   jsonld?: object[];
+  ogImage?: string;
+  ogType?: string;
+  publishedTime?: string;
 }
 const {
   title,
   description = SITE.description,
   noindex = false,
   jsonld = [],
+  ogImage = '/og-image.png',
+  ogType = 'website',
+  publishedTime,
 } = Astro.props;
 
 const fullTitle = title ? `${title} | ${SITE.name}` : `${SITE.name} | ${SITE.tagline}`;
 const canonical = new URL(Astro.url.pathname, SITE.url).href.replace(/\/$/, '') || SITE.url;
+const ogImageUrl = new URL(ogImage, SITE.url).href;
+
+const alwaysJsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: (() => {
+      const parts = Astro.url.pathname.split('/').filter(Boolean);
+      const items = [{ '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE.url }];
+      let acc = SITE.url;
+      parts.forEach((p, i) => {
+        acc += '/' + p;
+        const label = decodeURIComponent(p)
+          .replace(/-/g, ' ')
+          .replace(/\b\w/g, (c) => c.toUpperCase());
+        items.push({ '@type': 'ListItem', position: i + 2, name: label, item: acc });
+      });
+      return items;
+    })(),
+  },
+];
+const allJsonld = Astro.url.pathname === '/' ? jsonld : [...alwaysJsonld, ...jsonld];
 ---
 <!doctype html>
 <html lang="fr">
@@ -29,14 +57,23 @@ const canonical = new URL(Astro.url.pathname, SITE.url).href.replace(/\/$/, '') 
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={SITE.name} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="fr_FR" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title || SITE.name} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,7 +85,7 @@ const canonical = new URL(Astro.url.pathname, SITE.url).href.replace(/\/$/, '') 
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css"
     />
-    {jsonld.map((obj) => (
+    {allJsonld.map((obj) => (
       <script type="application/ld+json" set:html={JSON.stringify(obj)} />
     ))}
   </head>

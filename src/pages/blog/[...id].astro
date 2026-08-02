@@ -43,7 +43,13 @@ if (d.faq && d.faq.length > 0) {
   } as any);
 }
 ---
-<BaseLayout title={d.title} description={d.description} jsonld={jsonld}>
+<BaseLayout
+  title={d.title}
+  description={d.description}
+  jsonld={jsonld}
+  ogType="article"
+  publishedTime={d.pubDate.toISOString()}
+>
   <section class="section" style="padding-top: 32px;">
     <div class="container">
       <nav class="breadcrumb"><a href="/">Accueil</a> / <a href="/blog">Guides</a> / <span>{d.title}</span></nav>
