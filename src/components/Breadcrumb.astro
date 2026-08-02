@@ -1,0 +1,80 @@
+---
+import { NAV } from '../consts';
+interface Props { current?: string; }
+const { current } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const labels: Record<string, string> = {
+  'multirisque-immeuble': 'Multirisque immeuble',
+  'pno': 'Assurance PNO',
+  'garanties': 'Garanties',
+  'sinistres': 'Sinistres',
+  'a-propos': 'À propos',
+  'blog': 'Guides',
+  'demande-devis': 'Demander un devis',
+  'mentions-legales': 'Mentions légales',
+  'politique-confidentialite': 'Confidentialité',
+};
+
+const parts = path.split('/').filter(Boolean);
+const crumbs: { label: string; href?: string }[] = [{ label: 'Accueil', href: '/' }];
+let acc = '';
+parts.forEach((p, i) => {
+  acc += '/' + p;
+  const isLast = i === parts.length - 1;
+  const label = isLast && current ? current : (labels[p] || p);
+  crumbs.push({ label, href: isLast ? undefined : acc });
+});
+---
+{path !== '/' && (
+  <nav class="breadcrumb-nav" aria-label="Fil d'Ariane">
+    <div class="container">
+      <ol>
+        {crumbs.map((c, i) => (
+          <li>
+            {c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
+            {i < crumbs.length - 1 && <span class="sep" aria-hidden="true"> / </span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+)}
+
+<style>
+  .breadcrumb-nav {
+    background: var(--bg-soft);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 0;
+    font-size: 13px;
+  }
+  .breadcrumb-nav ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .breadcrumb-nav li {
+    display: inline-flex;
+    align-items: center;
+    color: var(--muted);
+  }
+  .breadcrumb-nav a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .breadcrumb-nav a:hover {
+    color: var(--navy);
+    text-decoration: underline;
+  }
+  .breadcrumb-nav span[aria-current="page"] {
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .breadcrumb-nav .sep {
+    margin: 0 8px;
+    color: var(--line);
+  }
+</style>

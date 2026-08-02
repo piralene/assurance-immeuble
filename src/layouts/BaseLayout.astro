@@ -2,6 +2,7 @@
 import { SITE } from '../consts';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -91,6 +92,7 @@ const allJsonld = Astro.url.pathname === '/' ? jsonld : [...alwaysJsonld, ...jso
   </head>
   <body>
     <Header />
+    <Breadcrumb current={title} />
     <main>
       <slot />
     </main>
