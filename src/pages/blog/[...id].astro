@@ -19,6 +19,7 @@ const registerLabel: Record<string, string> = {
 };
 const showRegisterTag = d.register && registerLabel[d.register] !== d.category;
 
+const now = new Date().toISOString();
 const jsonld = [
   {
     '@context': 'https://schema.org',
@@ -26,9 +27,26 @@ const jsonld = [
     headline: d.title,
     description: d.description,
     datePublished: d.pubDate.toISOString(),
-    author: { '@type': 'Organization', name: 'assurance-immeuble.fr' },
-    publisher: { '@type': 'Organization', name: 'assurance-immeuble.fr' },
+    dateModified: now,
+    inLanguage: 'fr-FR',
+    author: {
+      '@type': 'Person',
+      name: 'Frédéric Pegon',
+      jobTitle: "Agent général d'assurances",
+      worksFor: { '@type': 'Organization', name: 'Allianz Frédéric Pegon' },
+      url: 'https://www.assurance-immeuble.fr/a-propos',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Allianz Frédéric Pegon',
+      logo: { '@type': 'ImageObject', url: 'https://www.assurance-immeuble.fr/favicon.svg' },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://www.assurance-immeuble.fr/blog/${post.id}`,
+    },
     articleSection: d.category,
+    keywords: [d.category, 'assurance immeuble', 'copropriété', 'PNO'].join(', '),
   },
 ];
 if (d.faq && d.faq.length > 0) {

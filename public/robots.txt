@@ -3,4 +3,17 @@ Allow: /
 Disallow: /forms/
 Disallow: /merci
 
+# Autoriser explicitement les crawlers IA
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://www.assurance-immeuble.fr/sitemap-index.xml

@@ -1,10 +1,39 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { QUOTE_HREF, STATS, WHY_US } from '../consts';
+import { QUOTE_HREF, SITE, STATS, WHY_US } from '../consts';
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: `À propos de ${SITE.legalName}`,
+    description: "Cabinet Allianz Frédéric Pegon, agent général à Mâcon depuis 1928, spécialisé assurance d'immeuble.",
+    url: `${SITE.url}/a-propos`,
+    mainEntity: {
+      '@type': 'Person',
+      name: 'Frédéric Pegon',
+      jobTitle: "Agent général d'assurances",
+      worksFor: {
+        '@type': 'InsuranceAgency',
+        name: 'Allianz Frédéric Pegon',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '26 rue Gambetta',
+          postalCode: '71000',
+          addressLocality: 'Mâcon',
+          addressCountry: 'FR',
+        },
+        telephone: '+33-3-85-22-99-00',
+        identifier: 'ORIAS 07 021 339',
+      },
+    },
+  },
+];
 ---
 <BaseLayout
   title="À propos : courtier spécialisé en immeuble"
   description="Agence Allianz Frédéric Pegon à Mâcon, spécialisée depuis 1928 dans l'assurance des immeubles. ORIAS 07 021 339, 4 500 immeubles assurés partout en France."
+  jsonld={jsonld}
 >
   <section class="hero hero--photo" style="padding: 60px 0 50px;">
     <div class="hero-bg" style="background-image: url('/photos/macon-agence.webp');"></div>

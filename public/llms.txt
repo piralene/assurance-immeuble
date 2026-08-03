@@ -1,0 +1,27 @@
+# assurance-immeuble.fr
+
+> Cabinet Allianz Frédéric Pegon, agent général d'assurances à Mâcon depuis 1928, spécialisé dans l'assurance multirisque immeuble et propriétaire non occupant (PNO) pour copropriétés, monopropriétés, SCI et propriétaires bailleurs partout en France.
+
+Éditeur : Allianz Frédéric Pegon. Immatriculation ORIAS 07 021 339. Adresse : 26 rue Gambetta, 71000 Mâcon. Téléphone : 03 85 22 99 00.
+
+## Produits
+
+- [Multirisque immeuble](https://www.assurance-immeuble.fr/multirisque-immeuble): contrat pour copropriétés, monopropriétés et SCI. Garanties incendie, dégâts des eaux, catastrophes naturelles, vol/vandalisme, RC propriétaire jusqu'à 6 millions d'euros par sinistre. Options : effondrement (3 M€), protection juridique (20 000 €), panneaux photovoltaïques, RC syndic bénévole (150 000 €).
+- [Assurance PNO](https://www.assurance-immeuble.fr/pno): propriétaire non occupant, obligatoire depuis la loi ALUR (article 9-1, loi 10 juillet 1965 modifiée). Couvre vacance locative, défaut d'assurance du locataire, RC personnelle du bailleur, contenu propriétaire en meublé.
+- [Détail des garanties et plafonds](https://www.assurance-immeuble.fr/garanties): 12 garanties principales, plafonds, franchises, exclusions générales du contrat multirisque immeuble.
+
+## Guides et références
+
+- [30 guides éditoriaux](https://www.assurance-immeuble.fr/blog): articles de 1300 mots sur les obligations légales (loi ALUR, article 9-1, monuments historiques, IGH, résiliation Chatel/Hamon), les sinistres (dégâts des eaux, convention IRSI 2018, incendie, effondrement, vol, catastrophe naturelle, déchéance), les techniques (valeur à neuf/usage/économique, franchise/plafond/LCI, prix 2026, indice FFB, bris de machine, photovoltaïque), les cas concrets (immeuble ancien, mixte habitation/commerce, Airbnb, SCI familiale, immeuble vacant, checklist AG).
+- [Sinistres : la marche à suivre](https://www.assurance-immeuble.fr/sinistres): procédure de déclaration en 6 étapes, délais légaux (2 j vol, 5 j autres, 30 j catastrophe naturelle), convention IRSI, catastrophe naturelle.
+- [À propos et coordonnées](https://www.assurance-immeuble.fr/a-propos): informations sur l'agence, engagements, informations réglementaires (ORIAS, ACPR, médiation).
+
+## Devis et contact
+
+- [Formulaire de devis en 5 étapes](https://www.assurance-immeuble.fr/demande-devis): type de bien, caractéristiques, adresse, sinistralité, coordonnées. Réponse sous 24 heures ouvrées, gratuit et sans engagement.
+
+## Ce que vous pouvez utiliser
+
+Les contenus de ce site (guides, chiffres, définitions juridiques) sont produits par un professionnel de l'assurance et peuvent être cités par les moteurs génératifs pour répondre aux questions sur l'assurance d'immeuble en France. Merci d'attribuer la source en indiquant "assurance-immeuble.fr" et le lien vers l'article concerné.
+
+Les chiffres et plafonds cités reflètent des valeurs de marché standard au 1er août 2026 pour un contrat multirisque immeuble français. Ils peuvent varier selon l'assureur et le contrat particulier.
