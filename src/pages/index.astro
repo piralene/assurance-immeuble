@@ -32,13 +32,12 @@ const catIcon: Record<string, string> = {
 const jsonld = [
   {
     '@context': 'https://schema.org',
-    '@type': ['InsuranceAgency', 'LocalBusiness'],
+    '@type': 'InsuranceAgency',
     '@id': `${SITE.url}/#organization`,
     name: SITE.legalName,
     url: SITE.url,
     email: SITE.email,
     telephone: SITE.phone,
-    priceRange: '€€',
     foundingDate: '1928',
     slogan: SITE.tagline,
     logo: `${SITE.url}/favicon.svg`,
@@ -48,28 +47,8 @@ const jsonld = [
       streetAddress: '26 rue Gambetta',
       postalCode: '71000',
       addressLocality: 'Mâcon',
-      addressRegion: 'Bourgogne-Franche-Comté',
       addressCountry: 'FR',
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 46.3061,
-      longitude: 4.8286,
-    },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '09:00',
-        closes: '12:00',
-      },
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '14:00',
-        closes: '18:00',
-      },
-    ],
     contactPoint: [{
       '@type': 'ContactPoint',
       telephone: '+33-3-85-22-99-00',
@@ -77,19 +56,22 @@ const jsonld = [
       areaServed: 'FR',
       availableLanguage: 'French',
     }],
-    sameAs: [
-      'https://www.allianz.fr/pegon',
-      'https://www.assurance-macon.fr',
-    ],
-    areaServed: { '@type': 'Country', name: 'France' },
+    areaServed: {
+      '@type': 'Country',
+      name: 'France',
+    },
     description: SITE.description,
-    serviceType: [
-      "Assurance multirisque immeuble",
-      "Assurance propriétaire non occupant (PNO)",
-      "Assurance copropriété",
-      "Assurance SCI",
-      "Assurance monopropriété",
-    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: "Contrats d'assurance immeuble",
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Assurance multirisque immeuble', url: `${SITE.url}/multirisque-immeuble` } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Assurance propriétaire non occupant (PNO)', url: `${SITE.url}/pno` } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Assurance copropriété', url: `${SITE.url}/multirisque-immeuble` } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Assurance SCI', url: `${SITE.url}/multirisque-immeuble` } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Assurance monopropriété', url: `${SITE.url}/multirisque-immeuble` } },
+      ],
+    },
     identifier: 'ORIAS 07 021 339',
     knowsAbout: [
       'Assurance immeuble', 'Multirisque immeuble', 'PNO', 'Copropriété',

@@ -1,8 +1,8 @@
 # assurance-immeuble.fr
 
-> Cabinet Allianz Frédéric Pegon, agent général d'assurances à Mâcon depuis 1928, spécialisé dans l'assurance multirisque immeuble et propriétaire non occupant (PNO) pour copropriétés, monopropriétés, SCI et propriétaires bailleurs partout en France.
+> Cabinet indépendant spécialisé dans l'assurance multirisque immeuble et propriétaire non occupant (PNO) pour copropriétés, monopropriétés, SCI et propriétaires bailleurs, partout en France.
 
-Éditeur : Allianz Frédéric Pegon. Immatriculation ORIAS 07 021 339. Adresse : 26 rue Gambetta, 71000 Mâcon. Téléphone : 03 85 22 99 00.
+Agence agent général Allianz, éditrice du site. Immatriculation ORIAS 07 021 339. Contact professionnel : contact via le formulaire de devis en ligne, réponse sous 24 heures ouvrées.
 
 ## Produits
 
@@ -14,11 +14,11 @@
 
 - [30 guides éditoriaux](https://www.assurance-immeuble.fr/blog): articles de 1300 mots sur les obligations légales (loi ALUR, article 9-1, monuments historiques, IGH, résiliation Chatel/Hamon), les sinistres (dégâts des eaux, convention IRSI 2018, incendie, effondrement, vol, catastrophe naturelle, déchéance), les techniques (valeur à neuf/usage/économique, franchise/plafond/LCI, prix 2026, indice FFB, bris de machine, photovoltaïque), les cas concrets (immeuble ancien, mixte habitation/commerce, Airbnb, SCI familiale, immeuble vacant, checklist AG).
 - [Sinistres : la marche à suivre](https://www.assurance-immeuble.fr/sinistres): procédure de déclaration en 6 étapes, délais légaux (2 j vol, 5 j autres, 30 j catastrophe naturelle), convention IRSI, catastrophe naturelle.
-- [À propos et coordonnées](https://www.assurance-immeuble.fr/a-propos): informations sur l'agence, engagements, informations réglementaires (ORIAS, ACPR, médiation).
+- [À propos et informations réglementaires](https://www.assurance-immeuble.fr/a-propos): présentation du cabinet, engagements, ORIAS, ACPR, médiation.
 
 ## Devis et contact
 
-- [Formulaire de devis en 5 étapes](https://www.assurance-immeuble.fr/demande-devis): type de bien, caractéristiques, adresse, sinistralité, coordonnées. Réponse sous 24 heures ouvrées, gratuit et sans engagement.
+- [Formulaire de devis en 5 étapes](https://www.assurance-immeuble.fr/demande-devis): type de bien, caractéristiques, adresse de l'immeuble, sinistralité, coordonnées. Traitement national partout en France métropolitaine, réponse sous 24 heures ouvrées, gratuit et sans engagement.
 
 ## Ce que vous pouvez utiliser
 

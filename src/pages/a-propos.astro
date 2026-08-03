@@ -7,7 +7,7 @@ const jsonld = [
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     name: `À propos de ${SITE.legalName}`,
-    description: "Cabinet Allianz Frédéric Pegon, agent général à Mâcon depuis 1928, spécialisé assurance d'immeuble.",
+    description: "Cabinet indépendant spécialisé en assurance d'immeuble, intervenant partout en France depuis 1928.",
     url: `${SITE.url}/a-propos`,
     mainEntity: {
       '@type': 'Person',
@@ -16,15 +16,8 @@ const jsonld = [
       worksFor: {
         '@type': 'InsuranceAgency',
         name: 'Allianz Frédéric Pegon',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: '26 rue Gambetta',
-          postalCode: '71000',
-          addressLocality: 'Mâcon',
-          addressCountry: 'FR',
-        },
-        telephone: '+33-3-85-22-99-00',
         identifier: 'ORIAS 07 021 339',
+        areaServed: { '@type': 'Country', name: 'France' },
       },
     },
   },
@@ -40,7 +33,7 @@ const jsonld = [
     <div class="container">
       <p class="eyebrow">À propos</p>
       <h1>Le courtier qui parle vraiment d'immeubles</h1>
-      <p class="lead">Agence Allianz Frédéric Pegon, à Mâcon depuis 1928. Copropriétés, SCI, propriétaires bailleurs : nous connaissons vos contraintes parce que nous les traitons tous les jours.</p>
+      <p class="lead">Cabinet d'agent général indépendant, spécialisé dans l'assurance d'immeuble partout en France. Copropriétés, SCI, propriétaires bailleurs : nous connaissons vos contraintes parce que nous les traitons tous les jours.</p>
       <div class="hero-actions">
         <a href={QUOTE_HREF} class="btn btn--primary">Nous solliciter</a>
         <a href="/multirisque-immeuble" class="btn btn--on-navy">Voir nos solutions</a>

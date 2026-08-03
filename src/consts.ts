@@ -11,7 +11,7 @@ export const SITE = {
   rcs: 'RCS Mâcon 430 290 353',
   tagline: "Agence Allianz spécialisée en assurance d'immeuble",
   description:
-    "Assurance multirisque immeuble et PNO pour copropriétés, syndics, propriétaires bailleurs, monopropriétés et SCI. Agence Allianz Frédéric Pegon à Mâcon, devis en ligne, réponse sous 24 h.",
+    "Assurance multirisque immeuble et PNO pour copropriétés, syndics, propriétaires bailleurs, monopropriétés et SCI, partout en France. Devis en ligne, réponse sous 24 h.",
 };
 
 export const NAV = [
