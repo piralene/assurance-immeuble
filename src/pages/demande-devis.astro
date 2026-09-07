@@ -43,12 +43,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3>Quel type de bien souhaitez-vous assurer ?</h3>
           <p class="hint">Sélectionnez la situation qui correspond le mieux à votre immeuble.</p>
           <div class="choice-grid">
-            <div class="choice"><input type="radio" name="type_bien" id="tb1" value="Copropriété" required /><label for="tb1"><i class="ti ti-building-community"></i> Copropriété</label></div>
-            <div class="choice"><input type="radio" name="type_bien" id="tb2" value="Monopropriété" /><label for="tb2"><i class="ti ti-building-skyscraper"></i> Monopropriété</label></div>
-            <div class="choice"><input type="radio" name="type_bien" id="tb3" value="PNO propriétaire bailleur" /><label for="tb3"><i class="ti ti-key"></i> PNO propriétaire bailleur</label></div>
-            <div class="choice"><input type="radio" name="type_bien" id="tb4" value="SCI ou société immobilière" /><label for="tb4"><i class="ti ti-briefcase"></i> SCI / société immobilière</label></div>
-            <div class="choice"><input type="radio" name="type_bien" id="tb5" value="Immeuble mixte habitation / commerce" /><label for="tb5"><i class="ti ti-building-store"></i> Mixte habitation / commerce</label></div>
-            <div class="choice"><input type="radio" name="type_bien" id="tb6" value="Immeuble en rénovation" /><label for="tb6"><i class="ti ti-tool"></i> Immeuble en rénovation</label></div>
+            <div class="choice"><label><input type="radio" name="type_bien" value="Copropriété" required /><i class="ti ti-building-community"></i> Copropriété</label></div>
+            <div class="choice"><label><input type="radio" name="type_bien" value="Monopropriété" /><i class="ti ti-building-skyscraper"></i> Monopropriété</label></div>
+            <div class="choice"><label><input type="radio" name="type_bien" value="PNO propriétaire bailleur" /><i class="ti ti-key"></i> PNO propriétaire bailleur</label></div>
+            <div class="choice"><label><input type="radio" name="type_bien" value="SCI ou société immobilière" /><i class="ti ti-briefcase"></i> SCI / société immobilière</label></div>
+            <div class="choice"><label><input type="radio" name="type_bien" value="Immeuble mixte habitation / commerce" /><i class="ti ti-building-store"></i> Mixte habitation / commerce</label></div>
+            <div class="choice"><label><input type="radio" name="type_bien" value="Immeuble en rénovation" /><i class="ti ti-tool"></i> Immeuble en rénovation</label></div>
           </div>
           <div class="wizard-actions">
             <span></span>
@@ -93,12 +93,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="field">
             <label>Équipements collectifs (plusieurs choix possibles)</label>
             <div class="choice-grid">
-              <div class="choice"><input type="checkbox" name="equip[]" id="eq1" value="Ascenseur" /><label for="eq1"><i class="ti ti-elevator"></i> Ascenseur</label></div>
-              <div class="choice"><input type="checkbox" name="equip[]" id="eq2" value="Chaufferie collective" /><label for="eq2"><i class="ti ti-flame"></i> Chaufferie collective</label></div>
-              <div class="choice"><input type="checkbox" name="equip[]" id="eq3" value="Panneaux solaires" /><label for="eq3"><i class="ti ti-solar-panel"></i> Panneaux solaires / photovoltaïque</label></div>
-              <div class="choice"><input type="checkbox" name="equip[]" id="eq4" value="Parking souterrain" /><label for="eq4"><i class="ti ti-car"></i> Parking souterrain</label></div>
-              <div class="choice"><input type="checkbox" name="equip[]" id="eq5" value="Piscine collective" /><label for="eq5"><i class="ti ti-pool"></i> Piscine collective</label></div>
-              <div class="choice"><input type="checkbox" name="equip[]" id="eq6" value="Digicode / vidéophone" /><label for="eq6"><i class="ti ti-shield-lock"></i> Digicode / vidéophone</label></div>
+              <div class="choice"><label><input type="checkbox" name="equip[]" value="Ascenseur" /><i class="ti ti-elevator"></i> Ascenseur</label></div>
+              <div class="choice"><label><input type="checkbox" name="equip[]" value="Chaufferie collective" /><i class="ti ti-flame"></i> Chaufferie collective</label></div>
+              <div class="choice"><label><input type="checkbox" name="equip[]" value="Panneaux solaires" /><i class="ti ti-solar-panel"></i> Panneaux solaires / photovoltaïque</label></div>
+              <div class="choice"><label><input type="checkbox" name="equip[]" value="Parking souterrain" /><i class="ti ti-car"></i> Parking souterrain</label></div>
+              <div class="choice"><label><input type="checkbox" name="equip[]" value="Piscine collective" /><i class="ti ti-pool"></i> Piscine collective</label></div>
+              <div class="choice"><label><input type="checkbox" name="equip[]" value="Digicode / vidéophone" /><i class="ti ti-shield-lock"></i> Digicode / vidéophone</label></div>
             </div>
           </div>
           <div class="wizard-actions">
@@ -140,8 +140,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="field">
             <label>Statut particulier</label>
             <div class="choice-grid">
-              <div class="choice"><input type="checkbox" name="statut[]" id="st1" value="Monument historique" /><label for="st1"><i class="ti ti-building-monument"></i> Monument historique</label></div>
-              <div class="choice"><input type="checkbox" name="statut[]" id="st2" value="Immeuble de grande hauteur (IGH)" /><label for="st2"><i class="ti ti-building-skyscraper"></i> Immeuble grande hauteur</label></div>
+              <div class="choice"><label><input type="checkbox" name="statut[]" value="Monument historique" /><i class="ti ti-building-monument"></i> Monument historique</label></div>
+              <div class="choice"><label><input type="checkbox" name="statut[]" value="Immeuble de grande hauteur (IGH)" /><i class="ti ti-building-skyscraper"></i> Immeuble grande hauteur</label></div>
             </div>
           </div>
           <div class="wizard-actions">
