@@ -1,7 +1,7 @@
 export const SITE = {
   name: 'assurance-immeuble.fr',
   legalName: 'Allianz Frédéric Pegon',
-  url: 'https://www.assurance-immeuble.fr',
+  url: 'https://assurance-immeuble.fr',
   email: 'pegon.macon@allianz.fr',
   phone: '03 85 22 99 00',
   address: '26 rue Gambetta, 71000 Mâcon',

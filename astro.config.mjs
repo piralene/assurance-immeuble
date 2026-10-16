@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://www.assurance-immeuble.fr',
+  site: 'https://assurance-immeuble.fr',
   trailingSlash: 'ignore',
   integrations: [
     sitemap({
@@ -16,7 +16,7 @@ export default defineConfig({
       lastmod: new Date(),
       serialize(item) {
         const url = item.url.replace(/\/$/, '');
-        if (url === 'https://www.assurance-immeuble.fr') {
+        if (url === 'https://assurance-immeuble.fr') {
           return { ...item, priority: 1.0, changefreq: 'weekly' };
         }
         if (/\/(multirisque-immeuble|pno|garanties|sinistres|demande-devis)$/.test(url)) {
