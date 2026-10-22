@@ -9,3 +9,17 @@
   for = "/forms/*"
   [headers.values]
     X-Robots-Tag = "noindex"
+
+# Ajouts du 2026-10-22 (indexation Search Console)
+# L'adresse provisoire Netlify répondait 200 : Google y voyait une copie du site.
+[[redirects]]
+  from = "https://assurance-immeuble.netlify.app/*"
+  to = "https://assurance-immeuble.fr/:splat"
+  status = 301
+  force = true
+
+# Adresse de sitemap par défaut (Bing et outils tiers la cherchent) : Astro produit sitemap-index.xml
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301

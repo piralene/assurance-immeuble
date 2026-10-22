@@ -79,17 +79,6 @@ const jsonld = [
       'SCI', 'Monopropriété', 'Catastrophe naturelle', 'Effondrement bâtiment',
     ],
   },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: SITE.name,
-    url: SITE.url,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE.url}/blog?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
-  },
 ];
 ---
 <BaseLayout
@@ -105,7 +94,7 @@ const jsonld = [
       <p class="lead">Copropriétés, propriétaires bailleurs, monopropriétés et SCI : nous mettons en concurrence les meilleurs assureurs pour sécuriser durablement votre patrimoine, tout en maîtrisant vos charges.</p>
       <div class="hero-actions">
         <a href={QUOTE_HREF} class="btn btn--primary">Obtenir mon devis en 24 h</a>
-        <a href="/multirisque-immeuble" class="btn btn--on-navy">Découvrir les garanties</a>
+        <a href="/multirisque-immeuble/" class="btn btn--on-navy">Découvrir les garanties</a>
       </div>
       <div class="hero-trust">
         <span><i class="ti ti-shield-check" aria-hidden="true"></i> Courtier indépendant ORIAS</span>
@@ -214,7 +203,7 @@ const jsonld = [
           </div>
         ))}
       </div>
-      <p style="margin-top:24px;"><a href="/garanties" class="card-link">Voir toutes les garanties <i class="ti ti-arrow-right" aria-hidden="true"></i></a></p>
+      <p style="margin-top:24px;"><a href="/garanties/" class="card-link">Voir toutes les garanties <i class="ti ti-arrow-right" aria-hidden="true"></i></a></p>
     </div>
   </section>
 
@@ -244,7 +233,7 @@ const jsonld = [
       <div class="container">
         <div style="display:flex;align-items:baseline;justify-content:space-between;">
           <h2 style="margin:0;">Guides et actualités</h2>
-          <a href="/blog" class="card-link">Voir tous les guides <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+          <a href="/blog/" class="card-link">Voir tous les guides <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
         </div>
         <div class="grid grid--3" style="margin-top:22px;">
           {posts.map((p) => (
@@ -254,7 +243,7 @@ const jsonld = [
               </div>
               <div class="body">
                 <span class="cat">{p.data.category}</span>
-                <h3><a href={`/blog/${p.id}`}>{p.data.title}</a></h3>
+                <h3><a href={`/blog/${p.id}/`}>{p.data.title}</a></h3>
               </div>
             </article>
           ))}
